@@ -1,0 +1,19 @@
+https://documenter.getpostman.com/view/998920/cyberark-rest-api-v10-public/2QrXnF#this-is-unofficial-documentation
+
+https://www.conjur.org/get-started/install-conjur.html
+https://www.conjur.org/tutorials/policy/applications.html
+
+
+
+curl -o docker-compose.yml https://www.conjur.org/get-started/docker-compose.quickstart.yml
+docker-compose pull
+docker-compose run --no-deps --rm conjur data-key generate > data_key && export CONJUR_DATA_KEY="$(< data_key)"
+ocker-compose up -d 
+docker-compose exec conjur conjurctl account create quick-start
+docker-compose exec client bash
+
+
+
+
+
+https://medium.com/@gmaliar/dynamic-secrets-on-kubernetes-pods-using-vault-35d9094d169

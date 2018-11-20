@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.1.0 (36652f6)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: client
+  name: client
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: client
+    spec:
+      containers:
+      - args:
+        - infinity
+        command:
+        - sleep
+        env:
+        - name: CONJUR_ACCOUNT
+        - name: CONJUR_APPLIANCE_URL
+          value: http://conjur
+        - name: CONJUR_AUTHN_API_KEY
+        - name: CONJUR_AUTHN_LOGIN
+          value: admin
+        image: conjurinc/cli5
+        name: client
+        resources: {}
+      restartPolicy: Always
+status: {}

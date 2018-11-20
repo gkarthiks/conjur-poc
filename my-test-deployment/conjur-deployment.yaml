@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.1.0 (36652f6)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: conjur
+  name: conjur
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: conjur
+    spec:
+      containers:
+      - args:
+        - server
+        env:
+        - name: CONJUR_DATA_KEY
+        - name: DATABASE_URL
+          value: postgres://postgres@database/postgres
+        image: cyberark/conjur
+        name: conjur
+        ports:
+        - containerPort: 80
+        resources: {}
+      restartPolicy: Always
+status: {}
